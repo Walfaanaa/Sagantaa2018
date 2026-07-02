@@ -92,10 +92,10 @@ st.markdown("""
 # -----------------------------------------------------
 agenda = [
     {"title":"Simannaa Keessummootaa","icon":"🤝",
-     "text":"Keessummoonni kabajamoon gara galma sagantichaatti ni dhufu."},
+     "text":"Keessommoonnii fi kabajamtoot sirna sagantaa keenya irratti argaman bakka ni qabatu."},
 
     {"title":"Baniinsa Sagantaa","icon":"🙏",
-     "text":"Sagantaan eebba Waaqayyootiin ni saaqama."},
+     "text":"Sagantaan eebba Mangoddootaatiin ni saaqama."},
 
     {"title":"Ibsa Sochii Bara Baajeta 2018 fi Karoora 2019","icon":"📊",
      "text":"Hojiiwwan bara 2018, milkaa'ina fi karoora 2019 ni ibsama."},
@@ -119,7 +119,7 @@ agenda = [
      "text":"Hirmaattota hundaaf galateeffannaan ni dhiyaata."},
 
     {"title":"Cufiinsa Sagantaa","icon":"🎉",
-     "text":"Sagantaan eebbaan ni xumurama."}
+     "text":"Sagantaan eebbaan eegale eebbaan ni xumurama."}
 ]
 
 # -----------------------------------------------------
@@ -155,7 +155,7 @@ ECONOMIC GROWTH SOLUTION ASSOCIATION (EGSA)
 st.markdown("""
 <div class="subtitle">
 Sirna Gamaaggamaa fi Cufiinsa Bara Baajeta 2018<br>
-Akkasumas Eegala Karoora Bara 2019
+Akkasumas Wixinee Karoora Bara 2019 ni dhihaata.
 </div>
 """, unsafe_allow_html=True)
 
@@ -237,7 +237,7 @@ st.markdown("""
 
 <h3 style="color:#0B5ED7;">
 Tokkummaan ni guddanna<br>
-Qusannaan ni badhaanna<br>
+Qusannaa aadaa hojii godhanna<br>
 Hojii fi Kutannoon immoo<br>
 Milkaa'ina ni gonfanna
 </h3>
