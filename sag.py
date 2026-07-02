@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 # -----------------------------------------------------
 # PAGE CONFIGURATION
@@ -10,62 +11,77 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------
-# CUSTOM CSS
+# CUSTOM CSS (ANIMATION + DESIGN)
 # -----------------------------------------------------
 st.markdown("""
 <style>
 
-.main{
-    background-color:#f7f9fc;
+.stApp {
+    background: linear-gradient(to bottom, #eef5ff, #ffffff);
 }
 
-.title{
+.title {
     text-align:center;
     color:#0B5ED7;
-    font-size:48px;
+    font-size:52px;
     font-weight:bold;
+    animation: fadeIn 1s ease-in;
 }
 
-.subtitle{
+.subtitle {
     text-align:center;
     color:#444;
     font-size:22px;
+    animation: fadeIn 1.5s ease-in;
 }
 
-.step{
+.step {
     font-size:20px;
-    color:#666;
+    color:#0B5ED7;
     font-weight:bold;
+    text-align:center;
 }
 
-.box{
+.box {
     background:white;
     border-radius:20px;
-    padding:35px;
-    box-shadow:0px 0px 15px rgba(0,0,0,0.15);
+    padding:40px;
+    box-shadow:0px 8px 25px rgba(0,0,0,0.15);
+    animation: fadeIn 0.8s ease-in;
+    transition:0.3s;
 }
 
-.bigicon{
-    font-size:90px;
+.box:hover {
+    transform: scale(1.01);
+}
+
+.bigicon {
+    font-size:100px;
     text-align:center;
 }
 
-.heading{
+.heading {
     text-align:center;
     color:#0B5ED7;
-    font-size:36px;
+    font-size:38px;
     font-weight:bold;
 }
 
-.text{
+.text {
     font-size:24px;
     text-align:center;
     line-height:1.8;
 }
 
-.footer{
+.footer {
     text-align:center;
     color:gray;
+    margin-top:30px;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
 }
 
 </style>
@@ -74,171 +90,123 @@ st.markdown("""
 # -----------------------------------------------------
 # DATA
 # -----------------------------------------------------
-
 agenda = [
-    {
-        "title": "Simannaa Keessummootaa",
-        "icon": "🤝",
-        "text": "Keessummoonni kabajamoon, miseensonni fi affeeramtoonni gara galma sagantichaatti dhufanii bakka isaanii qabatu."
-    },
-    {
-        "title": "Baniinsa Sagantaa",
-        "icon": "🙏",
-        "text": "Sagantaan eebba mootummaa Waaqayyootiin ni saaqama."
-    },
-    {
-        "title": "Ibsa Sochii Bara Baajeta 2018 fi Karoora Bara 2019",
-        "icon": "📊",
-        "text": """Dura Taa'aan EGSA hojiiwwan bara baajeta 2018 keessatti
-raawwataman irratti ibsa bal'aa ni kenna.
+    {"title":"Simannaa Keessummootaa","icon":"🤝",
+     "text":"Keessummoonni kabajamoon gara galma sagantichaatti ni dhufu."},
 
-Milkaa'inoota,
-qormaata,
-barnoota irraa argaman ni ibsama.
+    {"title":"Baniinsa Sagantaa","icon":"🙏",
+     "text":"Sagantaan eebba Waaqayyootiin ni saaqama."},
 
-Karoora bara baajeta 2019 ni ifoomsa."""
-    },
-    {
-        "title": "Yaada Marii fi Duubdeebii",
-        "icon": "💬",
-        "text": """Miseensota muraasa irraa yaadni marii ni fudhatama.
+    {"title":"Ibsa Sochii Bara Baajeta 2018 fi Karoora 2019","icon":"📊",
+     "text":"Hojiiwwan bara 2018, milkaa'ina fi karoora 2019 ni ibsama."},
 
-Keessummoota kabajamoo irraa yaadni ijaaraa ni kennama."""
-    },
-    {
-        "title": "Waraqaa Beekamtii",
-        "icon": "📜",
-        "text": "Miseensota hojii boonsaa hojjetaniif Waraqaan Beekamtii ni kennama."
-    },
-    {
-        "title": "Sirna Badhaasaa",
-        "icon": "🏆",
-        "text": """Miseensota hojii isaanii irratti hundaa'uun
+    {"title":"Yaada Marii fi Duubdeebii","icon":"💬",
+     "text":"Yaadonni ijaaran ni fudhatamu."},
 
-🥇 1ffaa
+    {"title":"Waraqaa Beekamtii","icon":"📜",
+     "text":"Miseensota hojii boonsaa hojjetaniif ni kennama."},
 
-🥈 2ffaa
+    {"title":"Sirna Badhaasaa","icon":"🏆",
+     "text":"Sadarkaa 1ffaa hanga 3ffaa badhaasni ni kennama."},
 
-🥉 3ffaa
+    {"title":"Qoodinsa Bu'aa Share","icon":"💰",
+     "text":"Bu'aan miseensota irratti hundaa'ee ni qoodama."},
 
-badhaasni addaa ni kennama."""
-    },
-    {
-        "title": "Qoodinsa Bu'aa Share",
-        "icon": "💰",
-        "text": "Bu'aan waggaa keessatti argame akka Share miseensotaa irratti hundaa'ee ni qoodama."
-    },
-    {
-        "title": "Lottery",
-        "icon": "🎁",
-        "text": "Carraan mootummaa sagantichaaf qophaa'e ni buufama."
-    },
-    {
-        "title": "Galateeffannaa",
-        "icon": "👏",
-        "text": "Miseensotaa, Keessummootaa fi Deeggartoota hundaaf galateeffannaan ni dhiyaata."
-    },
-    {
-        "title": "Cufiinsa Sagantaa",
-        "icon": "🎉",
-        "text": "Sagantaan akkuma eebbaan itti baname eebbaan ni xumurama."
-    }
+    {"title":"Lottery","icon":"🎁",
+     "text":"Carraan ni buufama."},
+
+    {"title":"Galateeffannaa","icon":"👏",
+     "text":"Hirmaattota hundaaf galateeffannaan ni dhiyaata."},
+
+    {"title":"Cufiinsa Sagantaa","icon":"🎉",
+     "text":"Sagantaan eebbaan ni xumurama."}
 ]
 
 # -----------------------------------------------------
 # SESSION STATE
 # -----------------------------------------------------
-
 if "page" not in st.session_state:
     st.session_state.page = 0
 
+page = st.session_state.page
+current = agenda[page]
 total = len(agenda)
 
-current = agenda[st.session_state.page]
+# -----------------------------------------------------
+# LOGO
+# -----------------------------------------------------
+try:
+    logo = Image.open("EGSA _.png")
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.image(logo, width=170)
+except:
+    st.warning("Logo file not found (EGSA _.png)")
 
 # -----------------------------------------------------
 # HEADER
 # -----------------------------------------------------
+st.markdown("""
+<div class="title">
+ECONOMIC GROWTH SOLUTION ASSOCIATION (EGSA)
+</div>
+""", unsafe_allow_html=True)
 
-st.markdown('<div class="title">🎊 EGSA 🎊</div>', unsafe_allow_html=True)
-
-st.markdown(
-    '<div class="subtitle">'
-    'Sirna Gamaaggamaa fi Cufiinsa Bara Baajeta 2018'
-    '<br>'
-    'Akkasumas Eegala Karoora Bara 2019'
-    '</div>',
-    unsafe_allow_html=True
-)
+st.markdown("""
+<div class="subtitle">
+Sirna Gamaaggamaa fi Cufiinsa Bara Baajeta 2018<br>
+Akkasumas Eegala Karoora Bara 2019
+</div>
+""", unsafe_allow_html=True)
 
 st.divider()
 
 # -----------------------------------------------------
 # PROGRESS
 # -----------------------------------------------------
-
-progress = (st.session_state.page + 1) / total
-
-st.progress(progress)
-
-st.markdown(
-    f"<div class='step'>STEP {st.session_state.page+1} OF {total}</div>",
-    unsafe_allow_html=True
-)
+st.progress((page+1)/total)
+st.markdown(f"<div class='step'>STEP {page+1} / {total}</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------
 # MAIN CARD
 # -----------------------------------------------------
+st.markdown("<div class='box'>", unsafe_allow_html=True)
 
-st.markdown('<div class="box">', unsafe_allow_html=True)
+st.markdown(f"<div class='bigicon'>{current['icon']}</div>", unsafe_allow_html=True)
 
-st.markdown(
-    f"<div class='bigicon'>{current['icon']}</div>",
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    f"<div class='heading'>{current['title']}</div>",
-    unsafe_allow_html=True
-)
+st.markdown(f"<div class='heading'>{current['title']}</div>", unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-st.markdown(
-    f"<div class='text'>{current['text']}</div>",
-    unsafe_allow_html=True
-)
+st.markdown(f"<div class='text'>{current['text']}</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------
-# SPECIAL EFFECTS
+# EFFECTS
 # -----------------------------------------------------
-
 if current["title"] == "Sirna Badhaasaa":
     st.balloons()
 
 if current["title"] == "Lottery":
     st.snow()
 
-# -----------------------------------------------------
-# BUTTONS
-# -----------------------------------------------------
+if current["title"] == "Qoodinsa Bu'aa Share":
+    st.success("💰 Bu'aan Share ni qoodama.")
 
+# -----------------------------------------------------
+# NAVIGATION
+# -----------------------------------------------------
 col1, col2, col3 = st.columns([1,2,1])
 
 with col1:
-
     if st.button("⬅ Previous", use_container_width=True):
-
         if st.session_state.page > 0:
             st.session_state.page -= 1
             st.rerun()
 
 with col3:
-
     if st.button("Next ➡", use_container_width=True):
-
         if st.session_state.page < total-1:
             st.session_state.page += 1
             st.rerun()
@@ -246,45 +214,33 @@ with col3:
 # -----------------------------------------------------
 # SIDEBAR
 # -----------------------------------------------------
-
 with st.sidebar:
-
-    st.header("Agenda")
+    st.header("📌 Agenda")
 
     for i, item in enumerate(agenda):
-
-        if st.button(
-            f"{i+1}. {item['title']}",
-            key=i,
-            use_container_width=True
-        ):
+        if st.button(f"{i+1}. {item['title']}", key=i):
             st.session_state.page = i
             st.rerun()
 
     st.divider()
-
-    st.success(f"Current Step : {st.session_state.page+1}/{total}")
+    st.success(f"Step {page+1} of {total}")
 
 # -----------------------------------------------------
 # FOOTER
 # -----------------------------------------------------
-
 st.divider()
 
-st.markdown(
-"""
-<div class='footer'>
+st.markdown("""
+<div class="footer">
 
-<h3>🌟 Dhaadannoo Guyyichaa 🌟</h3>
+<h2>🌟 Dhaadannoo Guyyichaa 🌟</h2>
 
-<h2>
-"Tokkummaan ni guddanna,
-Qusannaan ni badhaanna,
-Hojii fi Kutannoon immoo
-Milkaa'ina ni Gonfanna."
-</h2>
+<h3 style="color:#0B5ED7;">
+Tokkummaan ni guddanna<br>
+Qusannaan ni badhaanna<br>
+Hojii fi Kutannoon immoo<br>
+Milkaa'ina ni gonfanna
+</h3>
 
 </div>
-""",
-unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
