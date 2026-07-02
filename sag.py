@@ -215,7 +215,7 @@ with col3:
 # SIDEBAR
 # -----------------------------------------------------
 with st.sidebar:
-    st.header("📌 Agenda")
+    st.header(" Akkaataa adeemsa sagantaa")
 
     for i, item in enumerate(agenda):
         if st.button(f"{i+1}. {item['title']}", key=i):
