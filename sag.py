@@ -107,7 +107,7 @@ agenda = [
      "text":"Miseensota hojii boonsaa hojjetaniif ni kennama."},
 
     {"title":"Sirna Badhaasaa","icon":"🏆",
-     "text":"Sadarkaa 1ffaa hanga 3ffaa Miseensota hojii isaaniitiin ga`uumsa bahaniif badhaasni ni kennama."},
+     "text":"Sadarkaa 1ffaa hanga 3ffaa Miseensota hojii isaaniitiin ga`uumsaan qabxii olaanaa argataniif badhaasni ni kennama."},
 
     {"title":"Qoodinsa Bu'aa Share","icon":"💰",
      "text":"Bu'aan miseensota irratti hundaa'ee ni qoodama."},
