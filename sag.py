@@ -101,7 +101,7 @@ agenda = [
      "text":"Hojiiwwan bara 2018, milkaa'ina fi karoora 2019 ni ibsama."},
 
     {"title":"Yaada Marii fi Duubdeebii","icon":"💬",
-     "text":"Yaadonni ijaaran ni Miseensota fi Keessummoota irraa ni eegama."},
+     "text":"Yaadonni ijaarsaa fi qeeqaa Miseensota fi Keessummoota irraa ni eegama."},
 
     {"title":"Waraqaa Beekamtii","icon":"📜",
      "text":"Miseensota hojii boonsaa hojjetaniif ni kennama."},
