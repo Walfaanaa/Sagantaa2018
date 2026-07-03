@@ -110,7 +110,7 @@ agenda = [
      "text":"Sadarkaa 1ffaa hanga 3ffaa Miseensota hojii isaaniitiin ga`uumsaan qabxii olaanaa argataniif badhaasni ni kennama."},
 
     {"title":"Qoodinsa Bu'aa Share","icon":"💰",
-     "text":"Bu'aan miseensota irratti hundaa'ee ni qoodama."},
+     "text":"Bu'aan qabeenya miseensotaa irratti hundaa'ee haaluma qaneenya isaanitiin ni qoodamaaf."},
 
     {"title":"Lottery","icon":"🎁",
      "text":"Carraan ni buufama."},
