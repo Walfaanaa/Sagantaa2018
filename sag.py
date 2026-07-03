@@ -101,13 +101,13 @@ agenda = [
      "text":"Hojiiwwan bara 2018, milkaa'ina fi karoora 2019 ni ibsama."},
 
     {"title":"Yaada Marii fi Duubdeebii","icon":"💬",
-     "text":"Yaadonni ijaaran ni fudhatamu."},
+     "text":"Yaadonni ijaaran ni Miseensota fi Keessummoota irraa ni eegama."},
 
     {"title":"Waraqaa Beekamtii","icon":"📜",
      "text":"Miseensota hojii boonsaa hojjetaniif ni kennama."},
 
     {"title":"Sirna Badhaasaa","icon":"🏆",
-     "text":"Sadarkaa 1ffaa hanga 3ffaa badhaasni ni kennama."},
+     "text":"Sadarkaa 1ffaa hanga 3ffaa Miseensota hojii isaaniitiin ga`uumsa bahaniif badhaasni ni kennama."},
 
     {"title":"Qoodinsa Bu'aa Share","icon":"💰",
      "text":"Bu'aan miseensota irratti hundaa'ee ni qoodama."},
