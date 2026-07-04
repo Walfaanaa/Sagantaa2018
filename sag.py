@@ -232,9 +232,6 @@ st.divider()
 
 st.markdown("""
 <div class="footer">
-
-<h2>🌟 Dhaadannoo Guyyichaa 🌟</h2>
-
 <h3 style="color:#0B5ED7;">
 Tokkummaan ni guddanna<br>
 Qusannaa aadaa hojii godhanna<br>
